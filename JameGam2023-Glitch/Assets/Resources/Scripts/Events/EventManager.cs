@@ -10,6 +10,12 @@ public class EventManager : MonoBehaviour
     public Image splat;
     public AudioClip splatSFX;
 
+    public Sprite dogSit;
+
+    public List<Transform> children;
+
+    public float volume = 0.5f;
+
     private void Awake()
     {
         instance = this;
@@ -17,6 +23,16 @@ public class EventManager : MonoBehaviour
 
     private void Start()
     {
+        children = new List<Transform>();
+        int childrenCount = transform.childCount;
+
+        for (int i = 0; i < childrenCount; i++)
+        {
+            Transform child = transform.GetChild(i);
+
+            children.Add(child);
+        }
+
         if (playSfx == null)
             playSfx = StartCoroutine(_playSFX());
     }
@@ -24,9 +40,9 @@ public class EventManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        int childrenCount = transform.childCount;
+        int childCount = transform.childCount;
 
-        for(int i = 0; i < childrenCount; i ++)
+        for(int i = 0; i < childCount; i++)
         {
             Transform child = transform.GetChild(i);
 
@@ -42,10 +58,24 @@ public class EventManager : MonoBehaviour
             }
         }
 
-        if(Input.GetKeyDown(KeyCode.C))
+        if(Input.anyKeyDown)
         {
-            TransitionController.instance.changeEyeState();
+            bool found = false;
+
+            for(int i = 0; i < childCount && !found; i++)
+            {
+                Event theEvent = transform.GetChild(i).GetComponent<Event>();
+
+                if (Input.GetKeyDown(theEvent.correctKey) && theEvent.inTrigger)
+                {
+                    theEvent.keyEntered = true;
+                    doAction(theEvent.gameObject);
+                    found = true;
+                }
+            }
         }
+
+
     }
 
 
@@ -54,13 +84,11 @@ public class EventManager : MonoBehaviour
     {
         while (true)
         {
-            int childrenCount = transform.childCount;
-
-            for (int i = 0; i < childrenCount; i++)
+            foreach(Transform item in children)
             {
-                GameObject child = transform.GetChild(i).gameObject;
+                GameObject child = item.gameObject;
                 if(child.GetComponent<Event>().sfx != null)
-                    AudioManager.instance.PlaySFX(child.GetComponent<Event>().sfx, child);
+                    AudioManager.instance.PlaySFX(child.GetComponent<Event>().sfx, child, volume);
             }
 
             yield return new WaitForSecondsRealtime(0.5f);
@@ -70,24 +98,30 @@ public class EventManager : MonoBehaviour
 
     public void doAction(GameObject theEvent)
     {
-        Event.EVENT_TYPE eventType = theEvent.GetComponent<Event>().eventType;
 
-        float destroyDelay = 0f;
+            Event.EVENT_TYPE eventType = theEvent.GetComponent<Event>().eventType;
 
-        switch (eventType)
-        {
-            case Event.EVENT_TYPE.jump:
-                jump();
+            float destroyDelay = 0f;
+
+            switch (eventType)
+            {
+                case Event.EVENT_TYPE.jump:
+                    jump();
+                    destroyDelay = 1f;
+                    break;
+                case Event.EVENT_TYPE.duck:
+                    break;
+                case Event.EVENT_TYPE.enemy:
+                    kill();
+                    break;
+                case Event.EVENT_TYPE.pet:
                 destroyDelay = 1f;
-                break;
-            case Event.EVENT_TYPE.duck:
-                break;
-            case Event.EVENT_TYPE.enemy:
-                kill();
-                break;
-        }
+                theEvent.GetComponent<Event>().setSprite(dogSit);
+                    break;
+            }
 
-        Destroy(theEvent, destroyDelay);
+            children.Remove(theEvent.GetComponent<Transform>());
+            Destroy(theEvent, destroyDelay);
     }
 
     public void jump()
@@ -99,5 +133,10 @@ public class EventManager : MonoBehaviour
     {
         AudioManager.instance.PlaySFX(splatSFX);
         splat.gameObject.SetActive(true);
+    }
+
+    public void pet()
+    {
+
     }
 }

@@ -136,7 +136,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7444209360818670179}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -148,7 +148,8 @@ MeshRenderer:
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
-  m_Materials: []
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -212,6 +213,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventType: 0
-  speed: 5
-  sprite: {fileID: 21300000, guid: 193cbef1e1e60ec4ca3046374124fef6, type: 3}
-  sfx: {fileID: 8300000, guid: 51a2c20f4617139459d55a78449e1437, type: 3}
+  speed: 8
+  sprite: {fileID: 21300000, guid: 75fe84a3fe9fa9e43ae15926b7232612, type: 3}
+  sfx: {fileID: 8300000, guid: 41aa624a00164de43aea8e820ca36e7e, type: 3}
+  correctKey: 0
+  inTrigger: 0
+  keyEntered: 0

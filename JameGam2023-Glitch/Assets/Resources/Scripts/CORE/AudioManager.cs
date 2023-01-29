@@ -24,7 +24,7 @@ public class AudioManager : MonoBehaviour
             DestroyImmediate(gameObject);
     }
 
-    public void PlaySFX(AudioClip effect, float volume = 0.5f, float pitch = 1f)
+    public void PlaySFX(AudioClip effect, float volume = 0.25f, float pitch = 1f)
     {
         AudioSource source = CreateNewSource(string.Format("SFX [{0}]", effect.name));
         source.clip = effect;
@@ -42,7 +42,7 @@ public class AudioManager : MonoBehaviour
     /// <param name="parent"></param>
     /// <param name="volume"></param>
     /// <param name="pitch"></param>
-    public void PlaySFX(AudioClip effect, GameObject parent, float volume = 0.5f, float pitch = 1f)
+    public void PlaySFX(AudioClip effect, GameObject parent, float volume = 0.25f, float pitch = 1f)
     {
         AudioSource source = CreateNewSource(string.Format("SFX [{0}]", effect.name), parent);
         source.transform.position = parent.transform.position;

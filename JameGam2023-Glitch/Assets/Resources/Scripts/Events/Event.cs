@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Event : MonoBehaviour
 {
     //ENUM
-    public enum EVENT_TYPE { jump, duck, enemy, grab, pet, ignore};
+    public enum EVENT_TYPE {jump, duck, enemy, grab, pet, ignore};
     public EVENT_TYPE eventType;
 
     /// <summary>
@@ -16,12 +16,14 @@ public class Event : MonoBehaviour
     public Sprite sprite;
     public AudioClip sfx;
 
+    [HideInInspector]
+    public KeyCode correctKey;
+    public bool inTrigger = false;
+    public bool keyEntered = false;
+
     /// <summary>
     /// Private instance vars
     /// </summary>
-    private bool inTrigger = false;
-    private bool keyEntered = false;
-    private KeyCode correctKey;
     private SpriteRenderer image;
 
     private void Awake()
@@ -58,15 +60,6 @@ public class Event : MonoBehaviour
     }
 
 
-    private void Update()
-    {
-        if(Input.GetKeyDown(correctKey) && inTrigger)
-        {
-            keyEntered = true;
-            EventManager.instance.doAction(gameObject);
-        }
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         inTrigger = true;
@@ -80,7 +73,34 @@ public class Event : MonoBehaviour
 
         if(!keyEntered)
         {
-            //Do lose con
+            EventManager.instance.children.Remove(this.transform);
+
+            PlayerStats.instance.loseHP();
+
+            Destroy(gameObject, 1f);
         }
+    }
+
+
+    public void setSprite(Sprite newImage)
+    {
+        image.sprite = newImage;
+    }
+
+
+    public void resetSprite()
+    {
+        image.sprite = sprite;
+    }
+
+
+    public void turnOnCapsule()
+    {
+        gameObject.GetComponent<MeshRenderer>().enabled = true;
+    }
+
+    public void turnOffCapsule()
+    {
+        gameObject.GetComponent<MeshRenderer>().enabled = false;
     }
 }
