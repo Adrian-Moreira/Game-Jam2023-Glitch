@@ -11,6 +11,8 @@ public class Tutorial : MonoBehaviour
     public static bool runningTutorial, ranTutorial;
     private static int i = 0;
 
+    [SerializeField] private AudioClip[] audio;
+
     void Start()
     {
         instance = this;
@@ -36,6 +38,11 @@ public class Tutorial : MonoBehaviour
                         i++;
                     }
                     else if(i == 1){
+                        DialogueManager.instance.StartDialogue("Hi!");
+                        EventSpawner.instance.spawnEvent();
+                        AudioManager.instance.PlaySFX(audio[0]);
+                        i++;
+                    }else if(i == 2){
                         runningTutorial = false;
                         ranTutorial = true;
                     }
