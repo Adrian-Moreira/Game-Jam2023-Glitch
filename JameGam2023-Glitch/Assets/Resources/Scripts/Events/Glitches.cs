@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Glitches : MonoBehaviour
 {
+    public static Glitches instance;
+
     public Camera mainCamera;
 
     public Sprite missing;
@@ -19,6 +21,11 @@ public class Glitches : MonoBehaviour
     public bool isUpsideDown = false;
     public bool volumeGlitching = false;
 
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     private void Update()
     {
