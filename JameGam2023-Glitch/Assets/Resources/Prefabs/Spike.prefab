@@ -215,4 +215,7 @@ MonoBehaviour:
   eventType: 0
   speed: 8
   sprite: {fileID: 21300000, guid: 75fe84a3fe9fa9e43ae15926b7232612, type: 3}
-  sfx: {fileID: 8300000, guid: 51a2c20f4617139459d55a78449e1437, type: 3}
+  sfx: {fileID: 8300000, guid: 41aa624a00164de43aea8e820ca36e7e, type: 3}
+  correctKey: 0
+  inTrigger: 0
+  keyEntered: 0

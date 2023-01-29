@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class TitleScreen : MonoBehaviour
 {
 
+    public static TitleScreen instance;
+
     [SerializeField] private AudioClip titleSound;
 
     [SerializeField] private CanvasGroup titleLeft, titleRight, titleMain, titleBackground;
@@ -17,6 +19,12 @@ public class TitleScreen : MonoBehaviour
 
     private bool part1, part2;
     private float delay1, delay2, delay3;
+
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     public void animateTitle()
     {
@@ -88,7 +96,7 @@ public class TitleScreen : MonoBehaviour
                 }
                 else
                 {
-                    //start Endless
+                    GameController.instance.startEndless();
                 }
 
             }

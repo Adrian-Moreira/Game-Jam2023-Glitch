@@ -15,7 +15,7 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
-        
+        startEndless();
     }
 
 

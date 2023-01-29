@@ -10,6 +10,8 @@ public class EventManager : MonoBehaviour
     public Image splat;
     public AudioClip splatSFX;
 
+    public Sprite dogSit;
+
     public List<Transform> children;
 
     public float volume = 0.5f;
@@ -67,7 +69,7 @@ public class EventManager : MonoBehaviour
                 if (Input.GetKeyDown(theEvent.correctKey) && theEvent.inTrigger)
                 {
                     theEvent.keyEntered = true;
-                    instance.doAction(theEvent.gameObject);
+                    doAction(theEvent.gameObject);
                     found = true;
                 }
             }
@@ -112,6 +114,10 @@ public class EventManager : MonoBehaviour
                 case Event.EVENT_TYPE.enemy:
                     kill();
                     break;
+                case Event.EVENT_TYPE.pet:
+                destroyDelay = 1f;
+                theEvent.GetComponent<Event>().setSprite(dogSit);
+                    break;
             }
 
             children.Remove(theEvent.GetComponent<Transform>());
@@ -127,5 +133,10 @@ public class EventManager : MonoBehaviour
     {
         AudioManager.instance.PlaySFX(splatSFX);
         splat.gameObject.SetActive(true);
+    }
+
+    public void pet()
+    {
+
     }
 }
