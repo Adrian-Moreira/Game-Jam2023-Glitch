@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Event : MonoBehaviour
 {
     //ENUM
-    public enum EVENT_TYPE { jump, duck, enemy, grab, pet, ignore};
+    public enum EVENT_TYPE {jump, duck, enemy, grab, pet, ignore};
     public EVENT_TYPE eventType;
 
     /// <summary>
