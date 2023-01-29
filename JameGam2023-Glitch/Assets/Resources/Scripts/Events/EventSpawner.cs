@@ -32,25 +32,29 @@ public class EventSpawner : MonoBehaviour
 
             toSpawn = Instantiate(events[index]);
 
+            toSpawn.transform.SetParent(this.transform);
+
+            Vector3 cameraPos = new Vector3(defaultCameraPosition.position.x, 1f, defaultCameraPosition.position.z);
+            toSpawn.transform.position = MathLib.getEnemyPosition();
+            toSpawn.transform.LookAt(cameraPos);
+
+            if (Glitches.instance.textureGlitching)
+            {
+                Glitches.instance.textureGlitch();
+                Glitches.instance.textureGlitch();
+            }
+
         }
         else
         {
             toSpawn = Instantiate(events[index]);
-        }
 
-        toSpawn.transform.SetParent(this.transform);
-
-        Vector3 cameraPos = new Vector3(defaultCameraPosition.position.x, 1f, defaultCameraPosition.position.z);
-        toSpawn.transform.LookAt(cameraPos);
-
-        if (Glitches.instance.textureGlitching)
-        {
-            Glitches.instance.textureGlitch();
-            Glitches.instance.textureGlitch();
-
+            toSpawn.transform.SetParent(this.transform);
         }
 
         EventManager.instance.children.Add(toSpawn.transform);
-        
+
+
+
     }
 }
