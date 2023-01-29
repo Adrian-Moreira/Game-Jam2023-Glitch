@@ -55,6 +55,25 @@ public class EventManager : MonoBehaviour
                 splat.gameObject.SetActive(false);
             }
         }
+
+        if(Input.anyKeyDown)
+        {
+            bool found = false;
+
+            for(int i = 0; i < childCount && !found; i++)
+            {
+                Event theEvent = transform.GetChild(i).GetComponent<Event>();
+
+                if (Input.GetKeyDown(theEvent.correctKey) && theEvent.inTrigger)
+                {
+                    theEvent.keyEntered = true;
+                    instance.doAction(theEvent.gameObject);
+                    found = true;
+                }
+            }
+        }
+
+
     }
 
 
@@ -77,25 +96,26 @@ public class EventManager : MonoBehaviour
 
     public void doAction(GameObject theEvent)
     {
-        Event.EVENT_TYPE eventType = theEvent.GetComponent<Event>().eventType;
 
-        float destroyDelay = 0f;
+            Event.EVENT_TYPE eventType = theEvent.GetComponent<Event>().eventType;
 
-        switch (eventType)
-        {
-            case Event.EVENT_TYPE.jump:
-                jump();
-                destroyDelay = 1f;
-                break;
-            case Event.EVENT_TYPE.duck:
-                break;
-            case Event.EVENT_TYPE.enemy:
-                kill();
-                break;
-        }
+            float destroyDelay = 0f;
 
-        children.Remove(theEvent.GetComponent<Transform>());
-        Destroy(theEvent, destroyDelay);
+            switch (eventType)
+            {
+                case Event.EVENT_TYPE.jump:
+                    jump();
+                    destroyDelay = 1f;
+                    break;
+                case Event.EVENT_TYPE.duck:
+                    break;
+                case Event.EVENT_TYPE.enemy:
+                    kill();
+                    break;
+            }
+
+            children.Remove(theEvent.GetComponent<Transform>());
+            Destroy(theEvent, destroyDelay);
     }
 
     public void jump()
