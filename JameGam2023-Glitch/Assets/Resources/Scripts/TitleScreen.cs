@@ -9,6 +9,8 @@ public class TitleScreen : MonoBehaviour
     public static TitleScreen instance;
 
     [SerializeField] private AudioClip titleSound;
+    
+    [SerializeField] private AudioClip bgm;
 
     [SerializeField] private CanvasGroup titleLeft, titleRight, titleMain, titleBackground;
 
@@ -97,6 +99,8 @@ public class TitleScreen : MonoBehaviour
                 else
                 {
                     GameController.instance.startEndless();
+                    AudioManager.instance.PlaySong(bgm);
+                    Debug.Log("here?");
                 }
 
             }
