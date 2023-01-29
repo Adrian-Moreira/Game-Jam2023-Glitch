@@ -17,7 +17,13 @@ public class Tutorial : MonoBehaviour
     {
         instance = this;
         delay[0] = 1;
-        delay[1] = 1;
+        delay[1] = 10;
+        delay[2] = 10;
+        delay[3] = 10;
+        delay[4] = 5;
+        delay[5] = 5;
+        delay[6] = 5;
+        delay[7] = 5;
         Debug.Log(delay[0] + "" + delay[1]);
         runningTutorial = false;
         ranTutorial = false;
@@ -33,16 +39,54 @@ public class Tutorial : MonoBehaviour
                 if(delay[i] <= 0)
                 {
                     if(i == 0){
-                        DialogueManager.instance.StartDialogue("Hi!");
-                        EventSpawner.instance.spawnEvent();
+                        DialogueManager.instance.StartDialogue("Hello, and welcome to relax! I will be your guide through this tutorial. Don’t worry, just relax. I’ll show you all of the tips and tricks that you’ll be needing.");
+                        // EventSpawner.instance.spawnEvent();
+                        AudioManager.instance.PlaySFX(audio[0]);
                         i++;
                     }
                     else if(i == 1){
-                        DialogueManager.instance.StartDialogue("Hi!");
+                        DialogueManager.instance.StartDialogue("Woah, look out! There’s an enemy approaching you!");
                         EventSpawner.instance.spawnEvent();
-                        AudioManager.instance.PlaySFX(audio[0]);
+                        AudioManager.instance.PlaySFX(audio[1]);
                         i++;
-                    }else if(i == 2){
+                    }
+                    else if(i == 2){
+                        DialogueManager.instance.StartDialogue("Uhh… *mic ruffling* John? The test user just entered in the no-no code *silence* yeah that one *silence* what do we- uhh… wait, give me a second *silence followed by keyboard clacks and mouse clicks* Welp… *expletive bleep* Uhm, okay. Sorry about that, just stand still and do what I tell you while we work on a fix…");
+                        // EventSpawner.instance.spawnEvent();
+                        AudioManager.instance.PlaySFX(audio[2]);
+                        i++;
+                    }
+                    else if(i == 3){
+                        DialogueManager.instance.StartDialogue("Welcome to the relax guided audio meditation. relax, the game where you just relax. First close your eyes…");
+                        EventSpawner.instance.spawnEvent();
+                        AudioManager.instance.PlaySFX(audio[3]);
+                        i++;
+                    }
+                    else if(i == 4){
+                        DialogueManager.instance.StartDialogue("Press a to attack.");
+                        EventSpawner.instance.spawnEvent();
+                        AudioManager.instance.PlaySFX(audio[4]);
+                        i++;
+                    }
+                    else if(i == 5){
+                        DialogueManager.instance.StartDialogue("Press c to calm down.");
+                        EventSpawner.instance.spawnEvent();
+                        AudioManager.instance.PlaySFX(audio[5]);
+                        i++;
+                    }
+                    else if(i == 6){
+                        DialogueManager.instance.StartDialogue("Press c to close your eyes.");
+                        EventSpawner.instance.spawnEvent();
+                        AudioManager.instance.PlaySFX(audio[6]);
+                        i++;
+                    }
+                    else if(i == 7){
+                        DialogueManager.instance.StartDialogue("");
+                        EventSpawner.instance.spawnEvent();
+                        AudioManager.instance.PlaySFX(audio[11]);
+                        i++;
+                    }
+                    else if(i == 8){
                         runningTutorial = false;
                         ranTutorial = true;
                     }
