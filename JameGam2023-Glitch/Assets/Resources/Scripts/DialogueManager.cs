@@ -29,7 +29,7 @@ public class DialogueManager : MonoBehaviour
     {
         // again = true;
         textComponent.text = string.Empty;
-        StartDialogue(startMsg);
+        //StartDialogue(startMsg);
     }
 
     // Update is called once per frame
