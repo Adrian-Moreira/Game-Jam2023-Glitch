@@ -772,7 +772,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   events:
   - {fileID: 5409773565617203394, guid: f2b92bcd875e7144cb97fa1454cddbff, type: 3}
-  - {fileID: 8616128421205846688, guid: 19fe893d0f6be9f4b8ffb98a33d083a4, type: 3}
+  - {fileID: 5656866032936895538, guid: bf8a4d9f027312140bc01d07ea2ddfb6, type: 3}
   - {fileID: 7444209360818670179, guid: 91ea426aa820ee941ac936bc9915ddd4, type: 3}
   defaultCameraPosition: {fileID: 963194228}
 --- !u!1 &538631030
@@ -1207,6 +1207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 2
+  glitchTimer: 15
 --- !u!114 &649382120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1237,7 +1238,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &673515221
 Transform:
   m_ObjectHideFlags: 0
@@ -8044,6 +8045,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textComponent: {fileID: 2143597090}
   textSpeed: 0.06
+  delay: 10
 --- !u!95 &2094696903
 Animator:
   serializedVersion: 5

@@ -8,6 +8,8 @@ public class GameController : MonoBehaviour
 
     public float timer = 2f;
 
+    public float glitchTimer = 15f;
+
     private void Awake()
     {
         instance = this;
@@ -15,7 +17,7 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
-        startEndless();
+
     }
 
 
