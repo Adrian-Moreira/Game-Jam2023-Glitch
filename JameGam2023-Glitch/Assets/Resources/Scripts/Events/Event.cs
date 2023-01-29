@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Event : MonoBehaviour
 {
     //ENUM
-    public enum EVENT_TYPE { jump, duck, enemy, grab, pet, ignore};
+    public enum EVENT_TYPE {jump, duck, enemy, grab, pet, ignore};
     public EVENT_TYPE eventType;
 
     /// <summary>
@@ -80,7 +80,32 @@ public class Event : MonoBehaviour
 
         if(!keyEntered)
         {
-            //Do lose con
+            EventManager.instance.children.Remove(this.transform);
+
+            Destroy(gameObject, 1f);
         }
+    }
+
+
+    public void setSprite(Sprite newImage)
+    {
+        image.sprite = newImage;
+    }
+
+
+    public void resetSprite()
+    {
+        image.sprite = sprite;
+    }
+
+
+    public void turnOnCapsule()
+    {
+        gameObject.GetComponent<MeshRenderer>().enabled = true;
+    }
+
+    public void turnOffCapsule()
+    {
+        gameObject.GetComponent<MeshRenderer>().enabled = false;
     }
 }
