@@ -15,7 +15,18 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
+        
+    }
+
+
+    public void startEndless()
+    {
         mainGameLoop = StartCoroutine(_mainGameLoop());
+    }
+
+    public void stopEndless()
+    {
+        StopCoroutine(mainGameLoop);
     }
 
 
