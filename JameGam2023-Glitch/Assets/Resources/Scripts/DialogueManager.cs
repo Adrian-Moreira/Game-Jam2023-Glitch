@@ -32,15 +32,23 @@ public class DialogueManager : MonoBehaviour
         // StartDialogue(startMsg);
     }
 
-    // Update is called once per frame
-    void Update(){}
-
     public void StartDialogue(string newLine)
     {
 
         textComponent.text = string.Empty; // remove this and "dialogBoxStatus = true; // remove this for funny text" in Narrarotor for funny
         lines[0] = newLine;
         StartCoroutine(TypeLine());
+    }
+
+    public float delay = 10;
+    float timer;
+    void Update()
+    {
+        timer += Time.deltaTime;
+        if (timer > delay)
+        {
+            StartDialogue("stop talking!");
+        }
     }
 
     IEnumerator TypeLine()
