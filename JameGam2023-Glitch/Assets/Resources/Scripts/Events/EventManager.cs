@@ -10,6 +10,10 @@ public class EventManager : MonoBehaviour
     public Image splat;
     public AudioClip splatSFX;
 
+    public List<Transform> children;
+
+    public float volume = 0.5f;
+
     private void Awake()
     {
         instance = this;
@@ -17,6 +21,16 @@ public class EventManager : MonoBehaviour
 
     private void Start()
     {
+        children = new List<Transform>();
+        int childrenCount = transform.childCount;
+
+        for (int i = 0; i < childrenCount; i++)
+        {
+            Transform child = transform.GetChild(i);
+
+            children.Add(child);
+        }
+
         if (playSfx == null)
             playSfx = StartCoroutine(_playSFX());
     }
@@ -24,9 +38,9 @@ public class EventManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        int childrenCount = transform.childCount;
+        int childCount = transform.childCount;
 
-        for(int i = 0; i < childrenCount; i ++)
+        for(int i = 0; i < childCount; i++)
         {
             Transform child = transform.GetChild(i);
 
@@ -41,11 +55,6 @@ public class EventManager : MonoBehaviour
                 splat.gameObject.SetActive(false);
             }
         }
-
-        if(Input.GetKeyDown(KeyCode.C))
-        {
-            TransitionController.instance.changeEyeState();
-        }
     }
 
 
@@ -54,13 +63,11 @@ public class EventManager : MonoBehaviour
     {
         while (true)
         {
-            int childrenCount = transform.childCount;
-
-            for (int i = 0; i < childrenCount; i++)
+            foreach(Transform item in children)
             {
-                GameObject child = transform.GetChild(i).gameObject;
+                GameObject child = item.gameObject;
                 if(child.GetComponent<Event>().sfx != null)
-                    AudioManager.instance.PlaySFX(child.GetComponent<Event>().sfx, child);
+                    AudioManager.instance.PlaySFX(child.GetComponent<Event>().sfx, child, volume);
             }
 
             yield return new WaitForSecondsRealtime(0.5f);
@@ -87,6 +94,7 @@ public class EventManager : MonoBehaviour
                 break;
         }
 
+        children.Remove(theEvent.GetComponent<Transform>());
         Destroy(theEvent, destroyDelay);
     }
 
