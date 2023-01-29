@@ -82,12 +82,26 @@ public class TitleScreen : MonoBehaviour
                 animate = false;
                 title.SetActive(false);
 
-                // 
-                // ADD START GAME FUNCTION HERE
-                //
+                if(!Tutorial.ranTutorial)
+                {
+                    Tutorial.runTutorial();
+                }
+                else
+                {
+                    //start Endless
+                }
 
             }
         }
+    }
+
+    public void resetTitle(){
+        title.SetActive(true);
+        sound = true;
+        titleLeft.alpha = 0;
+        titleRight.alpha = 0;
+        titleMain.alpha = 1;
+        titleBackground.alpha = 1;
     }
 
 }
