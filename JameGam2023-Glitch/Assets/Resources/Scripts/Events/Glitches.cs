@@ -30,7 +30,7 @@ public class Glitches : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.G))
-            textureGlitch();
+            activateRandomGlitch();
 
         if (Input.GetKeyDown(KeyCode.U))
             upsideDown();
@@ -41,6 +41,37 @@ public class Glitches : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.V))
             playLouderAudio();
 
+    }
+
+
+
+    public void activateRandomGlitch()
+    {
+        int rand = Random.Range(1, 3);
+
+        if(rand == 1)
+        {
+            textureGlitch();
+        }
+        else if(rand == 2)
+        {
+            upsideDown();
+        }
+        else if(rand == 3)
+        {
+            changeVolume();
+        }
+
+
+        //Turn off other active glitches
+        if (textureGlitching && rand != 1)
+            textureGlitch();
+
+        if (isUpsideDown && rand != 2)
+            upsideDown();
+
+        if (volumeGlitching && rand != 3)
+            changeVolume();
     }
 
 
