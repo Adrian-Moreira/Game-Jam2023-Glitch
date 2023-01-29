@@ -7,6 +7,7 @@ public class DialogueManager : MonoBehaviour
 {
   
     public static DialogueManager instance;
+    // public Animator animator;
 
     void Awake(){
         instance = this;
@@ -19,17 +20,16 @@ public class DialogueManager : MonoBehaviour
     private string[] lines = new string[NUMLINES];  // holds dialog
     public float textSpeed;
 
-    private string startMsg = "Hey, welcome to %GAME_NAME%! I’ll be your guide through this tutorial. Don’t worry, just relax, I’ll show you all the tips and tricks that you’ll need.";
-    // public bool again;
+    // private string startMsg = "Hey, welcome to %GAME_NAME%! I’ll be your guide through this tutorial. Don’t worry, just relax, I’ll show you all the tips and tricks that you’ll need.";
 
     private int index = 0; // tracks which conversation we're on
 
     // Start is called before the first frame update
     void Start()
     {
-        // again = true;
-        textComponent.text = string.Empty;
-        StartDialogue(startMsg);
+        DisplayDialogBox(false);
+        // textComponent.text = string.Empty;
+        // StartDialogue(startMsg);
     }
 
     // Update is called once per frame
@@ -37,6 +37,8 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(string newLine)
     {
+
+        textComponent.text = string.Empty; // remove this and "dialogBoxStatus = true; // remove this for funny text" in Narrarotor for funny
         lines[0] = newLine;
         StartCoroutine(TypeLine());
     }
@@ -73,14 +75,12 @@ public class DialogueManager : MonoBehaviour
 
         }
 
-        // gameObject.SetActive(false); // hide dialog box
+    }
 
-        // if(again){
-        //     gameObject.SetActive(true);
-        //     textComponent.text = string.Empty;
-        //     StartDialogue(startMsg);
-        //     again = false;
-        // }
+    public void DisplayDialogBox(bool changeDisplay)
+    {
+        gameObject.SetActive(changeDisplay); // hide dialog box
+        // animator.SetBool("isOpen", changeDisplay);
 
     }
 
