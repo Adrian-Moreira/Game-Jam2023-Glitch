@@ -7,8 +7,8 @@ public class MathLib : MonoBehaviour
     
     static float minAngle = -Mathf.PI/4;
     static float maxAngle = Mathf.PI/4;
-    static float minRadius = 100;
-    static float maxRadius = 200;
+    static float minRadius = 50;
+    static float maxRadius = 100;
 
     public static Vector3 getEnemyPosition()
     {
