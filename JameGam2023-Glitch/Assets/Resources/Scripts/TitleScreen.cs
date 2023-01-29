@@ -6,21 +6,24 @@ using UnityEngine.UI;
 public class TitleScreen : MonoBehaviour
 {
 
-    //[SerializeField] private AudioClip bell;
+    [SerializeField] private AudioClip titleSound;
 
-    [SerializeField] private CanvasGroup titleLeft, titleRight, titleBack;
+    [SerializeField] private CanvasGroup titleLeft, titleRight, titleMain, titleBackground;
+
+    [SerializeField] private GameObject title;
 
     private bool animate = false;
     private bool sound = true;
 
     private bool part1, part2;
-    private float delay1, delay2;
+    private float delay1, delay2, delay3;
 
     public void animateTitle()
     {
         animate = true;
         delay1 = 1;
         delay2 = 1;
+        delay3 = 1;
         part1 = true;
         part2 = true;
     }
@@ -31,7 +34,7 @@ public class TitleScreen : MonoBehaviour
         {
             if(sound)
             {
-                //AudioManager.instance.PlaySFX(bell);
+                AudioManager.instance.PlaySFX(titleSound);
                 sound = false;
             }
             if(part1 && titleLeft.alpha < 1)
@@ -54,7 +57,7 @@ public class TitleScreen : MonoBehaviour
                 {
                     titleRight.alpha = 1;
                     part2 = false;
-                    titleBack.alpha = 0;
+                    titleMain.alpha = 0;
                 }
             }
             else if(delay2 > 0)
@@ -66,9 +69,23 @@ public class TitleScreen : MonoBehaviour
                 titleLeft.alpha -= Time.deltaTime;
                 titleRight.alpha -= Time.deltaTime;
             }
+            else if(delay3 > 0)
+            {
+                delay3 -= Time.deltaTime;
+            }
+            else if(titleBackground.alpha > 0)
+            {
+                titleBackground.alpha -= Time.deltaTime;
+            }
             else
             {
                 animate = false;
+                title.SetActive(false);
+
+                // 
+                // ADD START GAME FUNCTION HERE
+                //
+
             }
         }
     }
