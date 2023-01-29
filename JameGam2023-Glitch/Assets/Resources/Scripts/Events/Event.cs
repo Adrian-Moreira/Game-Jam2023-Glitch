@@ -75,6 +75,8 @@ public class Event : MonoBehaviour
         {
             EventManager.instance.children.Remove(this.transform);
 
+            PlayerStats.instance.loseHP();
+
             Destroy(gameObject, 1f);
         }
     }
