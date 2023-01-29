@@ -18,7 +18,7 @@ public class TransitionController : MonoBehaviour
         overlayImage.material = new Material(materialPrefab);
     }
 
-    public void changeEyeState(bool smooth = true)
+    public void changeEyeState(bool smooth = false)
     {
         ShowScene(eyesClosed, 1, smooth);
         eyesClosed = !eyesClosed;
