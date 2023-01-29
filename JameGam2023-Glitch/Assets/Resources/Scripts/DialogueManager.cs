@@ -27,7 +27,7 @@ public class DialogueManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        DisplayDialogBox(false);
+        DisplayDialogBox(true);
         // textComponent.text = string.Empty;
         // StartDialogue(startMsg);
     }
@@ -40,16 +40,16 @@ public class DialogueManager : MonoBehaviour
         StartCoroutine(TypeLine());
     }
 
-    public float delay = 10;
-    float timer;
-    void Update()
-    {
-        timer += Time.deltaTime;
-        if (timer > delay)
-        {
-            StartDialogue("stop talking!");
-        }
-    }
+    // public float delay = 10;
+    // float timer;
+    // void Update()
+    // {
+    //     timer += Time.deltaTime;
+    //     if (timer > delay)
+    //     {
+    //         StartDialogue("stop talking!");
+    //     }
+    // }
 
     IEnumerator TypeLine()
     {

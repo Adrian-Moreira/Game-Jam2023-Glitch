@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -634,7 +634,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &465038869
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1060,6 +1060,7 @@ GameObject:
   - component: {fileID: 649382118}
   - component: {fileID: 649382119}
   - component: {fileID: 649382120}
+  - component: {fileID: 649382121}
   m_Layer: 0
   m_Name: '**DO NOT DELETE** [CORE]'
   m_TagString: Untagged
@@ -1220,6 +1221,42 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HPBar: {fileID: 1300764246}
+--- !u!114 &649382121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 649382111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a4ccc9a82a8341489fa1b7ecc20956b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audio:
+  - {fileID: 8300000, guid: 031bbcbbb9b387f43bae5e75656740c6, type: 3}
+  - {fileID: 8300000, guid: dd5d9bbdd9dd2524ba9d51bec415e760, type: 3}
+  - {fileID: 8300000, guid: 6815fb9b4175ed941a2001f16bbca5dd, type: 3}
+  - {fileID: 8300000, guid: d28c8ea7eb2221b48a6f5d7dbc517bd4, type: 3}
+  - {fileID: 8300000, guid: f9b4343bfc1a8f8418b3a69886a5f79d, type: 3}
+  - {fileID: 8300000, guid: 6d6b8a5a04a9c5b40b9ef119f3727185, type: 3}
+  - {fileID: 8300000, guid: 09c1d53206b0ad445abce933c8bff935, type: 3}
+  - {fileID: 8300000, guid: 1ce3841c1dceeda469525e259530d18b, type: 3}
+  - {fileID: 8300000, guid: f0aba323f29ef64449d5aa404c01e29b, type: 3}
+  - {fileID: 8300000, guid: 78e478903abcf044181ed7c7c9bbcfee, type: 3}
+  - {fileID: 8300000, guid: 78e478903abcf044181ed7c7c9bbcfee, type: 3}
+  - {fileID: 8300000, guid: 2baf1e3101e6b024c86618343afb602b, type: 3}
+  - {fileID: 8300000, guid: 1f77317ad38daff4faa1b8232b0b25f8, type: 3}
+  - {fileID: 8300000, guid: 47f2986e19bfd8749a511d298b60a989, type: 3}
+  - {fileID: 8300000, guid: 6dcb8c4d932f1114b9af16c6e54e806f, type: 3}
+  - {fileID: 8300000, guid: 36d78114527393b40a5dc142df52db88, type: 3}
+  - {fileID: 8300000, guid: 195e89b119d216141947a2a174d9f39b, type: 3}
+  - {fileID: 8300000, guid: 53ba16f2f922b8a45b49d118bac88840, type: 3}
+  - {fileID: 8300000, guid: 8d6d226410b2af54ab1cb93a78a445cc, type: 3}
+  - {fileID: 8300000, guid: c47fe447b7ff9ab4d9a9989f5eecdd2e, type: 3}
+  - {fileID: 8300000, guid: 9ed8283cfc39ca647b61a6d17007ce02, type: 3}
+  - {fileID: 8300000, guid: a22b318039f982445a9dae87c9deaf45, type: 3}
+  - {fileID: 8300000, guid: 2792ee71b6603e347966101376ad1847, type: 3}
 --- !u!1 &673515220
 GameObject:
   m_ObjectHideFlags: 0
@@ -7246,7 +7283,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1169890758
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7894,7 +7931,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 49.5
+  m_fontSize: 39.85
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
