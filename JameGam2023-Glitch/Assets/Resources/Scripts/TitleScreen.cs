@@ -86,6 +86,7 @@ public class TitleScreen : MonoBehaviour
             else if(titleBackground.alpha > 0)
             {
                 titleBackground.alpha -= Time.deltaTime;
+                AudioManager.instance.PlaySong(bgm);
             }
             else
             {
@@ -99,8 +100,6 @@ public class TitleScreen : MonoBehaviour
                 else
                 {
                     GameController.instance.startEndless();
-                    AudioManager.instance.PlaySong(bgm);
-                    Debug.Log("here?");
                 }
 
             }
