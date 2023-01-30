@@ -31,7 +31,7 @@ public class GameOver : MonoBehaviour
 
     public void quitGame()
     {
-        TitleScreen.instance.resetTitle();
+        Application.Quit();
     }
 
 

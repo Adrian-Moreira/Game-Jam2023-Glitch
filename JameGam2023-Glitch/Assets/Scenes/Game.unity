@@ -1455,7 +1455,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 41.15
+  m_fontSize: 41.05
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -6707,7 +6707,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a31e1ca4c4857ca4b8fcee73a0aba4b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 2
+  timer: 1.25
   glitchTimer: 15
 --- !u!114 &1155781719
 MonoBehaviour:
