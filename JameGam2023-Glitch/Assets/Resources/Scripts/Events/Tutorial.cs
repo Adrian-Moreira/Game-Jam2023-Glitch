@@ -24,6 +24,7 @@ public class Tutorial : MonoBehaviour
         delay[5] = 5;
         delay[6] = 5;
         delay[7] = 5;
+        delay[8] = 5;
         Debug.Log(delay[0] + "" + delay[1]);
         runningTutorial = false;
         ranTutorial = false;
