@@ -51,7 +51,7 @@ public class Tutorial : MonoBehaviour
                         i++;
                     }
                     else if(i == 2){
-                        DialogueManager.instance.StartDialogue("Uhh… *mic ruffling* John? The test user just entered in the no-no code *silence* yeah that one *silence* what do we- uhh… wait, give me a second *silence followed by keyboard clacks and mouse clicks* Welp… *expletive bleep* Uhm, okay. Sorry about that, just stand still and do what I tell you while we work on a fix…");
+                        DialogueManager.instance.StartDialogue("Uhh… *mic ruffling* Dillan? The test user just entered in *that* code *silence* yeah that one *silence* what do we- uhh… wait, give me a second *silence followed by keyboard clacks and mouse clicks* Welp… *expletive bleep* Uhm, okay. Sorry about that, just stand still and do what I tell you while we work on a fix…");
                         // EventSpawner.instance.spawnEvent();
                         AudioManager.instance.PlaySFX(audio[2], 1);
                         i++;
